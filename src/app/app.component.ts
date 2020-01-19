@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { parse } from 'querystring';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  password = '';
+  length = 0;
   includeLetters = false;
   includeNumbers = false;
   includeSymbols = false;
+  password = '';
 
+  onChangeLength(value: string) {
+    const parsedValue = parseInt(value);
+    if (!isNaN(parsedValue)) {
+      this.length = parsedValue;
+    }
+  }
   onChangeUseLetters() {
     this.includeLetters = !this.includeLetters;
   }
@@ -21,9 +29,24 @@ export class AppComponent {
     this.includeSymbols = !this.includeSymbols;
   }
   onButtonClicked() {
-    console.log("Include Letters " + this.includeLetters)
-    console.log("Include Numbers " + this.includeNumbers)
-    console.log("Include Symbols " + this.includeSymbols)
-    this.password = "My Password";
+    const letters = "abcdefghijklmnopqrstuvwxyz";
+    const numbers = "1234567890";
+    const symbols = "~!@#$%^&*()_+";
+    let validChars = '';
+    if (this.includeLetters) {
+      validChars += letters;
+    }
+    if (this.includeNumbers) {
+      validChars += numbers;
+    }
+    if (this.includeSymbols) {
+      validChars += symbols;
+    }
+    let generatedPassword = '';
+    for (let i = 0; i < this.length; i++) {
+      const index = Math.floor(Math.random() * validChars.length);
+      generatedPassword += validChars[index];
+    }
+    this.password = generatedPassword;
   }
 }
