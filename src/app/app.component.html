@@ -5,15 +5,15 @@
 </div>
 <div>
   <label for="letters">Use Letters</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseLetters()" type="checkbox" />
 </div>
 <div>
   <label for="numbers">Use Numbers</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseNumbers()" type="checkbox" />
 </div>
 <div>
   <label for="symbols">Use Symbols</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseSymbols()" type="checkbox" />
 </div>
 <div>
   <button (click)="onButtonClicked()">Generate</button>
@@ -22,4 +22,3 @@
   <label for="password">Your Password</label>
   <input type="text" [value]="password" />
 </div>
-{{ password }}
