@@ -16,7 +16,14 @@
   <input (change)="onChangeUseSymbols()" type="checkbox" />
 </div>
 <div>
-  <button (click)="onButtonClicked()">Generate</button>
+  <button
+    [disabled]="
+      !(length && (includeSymbols || includeNumbers || includeLetters))
+    "
+    (click)="onButtonClicked()"
+  >
+    Generate
+  </button>
 </div>
 <div>
   <label for="password">Your Password</label>
