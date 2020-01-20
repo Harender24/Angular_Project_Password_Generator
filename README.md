@@ -1,5 +1,6 @@
 # Pw
 
+Live URL for this project: https://pw.harender24.now.sh/
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
 ## Development server
